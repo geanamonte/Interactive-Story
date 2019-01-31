@@ -1,5 +1,6 @@
 package com.example.interactivestory;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,14 +23,15 @@ public class MainActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                public void onClick(View v){
-                    String name = nameField.getText().toString();
-                    startStory()
-                    Toast.makeText(MainActivity.this, name, Toast.LENGTH_LONG).show();
-                }
+                String name = nameField.getText().toString();
+                startStory(name);
+//              Toast.makeText(MainActivity.this, name, Toast.LENGTH_LONG).show();
             }
 
-            private void startStory() {
+            private void startStory(String name) {
+                Intent intent = new Intent(MainActivity.this, StoryActivity.class);
+                intent.putExtra("name",name);
+                startActivity(intent);
             }
         });
 
