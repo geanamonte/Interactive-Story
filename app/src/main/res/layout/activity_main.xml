@@ -34,7 +34,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/enter_your_string_app_name"
+        android:hint="@string/key_name"
         android:inputType="textPersonName"
         android:maxLength="30"
         app:layout_constraintBottom_toTopOf="@+id/startButton"

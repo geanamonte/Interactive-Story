@@ -29,16 +29,21 @@ public class MainActivity extends AppCompatActivity {
                 startStory(name);
 //              Toast.makeText(MainActivity.this, name, Toast.LENGTH_LONG).show();
             }
-
-            private void startStory(String name) {
-                Intent intent = new Intent(MainActivity.this, StoryActivity.class);
-                Resources resources = getResources();
-                String key = resources.getString(R.string.key_name);
-                intent.putExtra(key,name);
-                startActivity(intent);
-            }
         });
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    private void startStory(String name) {
+        Intent intent = new Intent(MainActivity.this, StoryActivity.class);
+        Resources resources = getResources();
+        String key = resources.getString(R.string.key_name);
+        intent.putExtra(key,name);
+        startActivity(intent);
     }
 }
