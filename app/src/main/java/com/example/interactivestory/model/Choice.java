@@ -1,6 +1,6 @@
 package com.example.interactivestory.model;
 
-class Choice {
+public class Choice {
     private int textId;
     private int nextPage;
 
