@@ -1,9 +1,7 @@
 package com.example.interactivestory.ui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,9 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.interactivestory.R;
-import com.example.interactivestory.model.Choice;
 import com.example.interactivestory.model.Page;
 import com.example.interactivestory.model.Story;
+
+import java.util.Stack;
 
 public class StoryActivity extends AppCompatActivity {
     public static final String TAG = StoryActivity.class.getSimpleName();
@@ -26,6 +25,7 @@ public class StoryActivity extends AppCompatActivity {
     private TextView storyTextView;
     private Button choice1Button;
     private Button choice2Button;
+    private Stack<Integer> pageStack = new Stack<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,7 @@ public class StoryActivity extends AppCompatActivity {
     }
 
     private void loadPage(int pageNumber) {
+        pageStack.push(pageNumber);
         final Page page = story.getPage(pageNumber);
 
         Drawable image = ContextCompat.getDrawable(this, page.getImageId());
@@ -91,5 +92,14 @@ public class StoryActivity extends AppCompatActivity {
                 loadPage(page.getChoice2().getNextPage());
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        pageStack.pop();
+        if (pageStack.isEmpty())
+            super.onBackPressed();
+        else
+            loadPage(pageStack.pop());
     }
 }

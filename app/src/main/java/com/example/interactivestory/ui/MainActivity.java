@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     @Override
@@ -46,4 +45,6 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(key,name);
         startActivity(intent);
     }
+
+
 }
